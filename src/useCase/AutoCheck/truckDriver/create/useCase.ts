@@ -8,11 +8,20 @@ export class TruckDriverUseCase {
         private saveAutoCheckUser: SaveAutoCheckUser,
     ) { }
 
-    async execute(AutoCheckUser: AutoCheckUser) {
-        const AutoCheckUserExist = await this.CustomerRepository.Find(AutoCheckUser.plate)
+    async execute(AutoCheckUserBody: AutoCheckUser) {
+
+        const AutoCheckUserExist = await this.CustomerRepository.Find(AutoCheckUserBody.plate)
         if (AutoCheckUserExist) {
             throw new Error('Motorista já cadastrado')
         }
-        await this.saveAutoCheckUser.save(AutoCheckUser)
+
+        const user = new AutoCheckUser({
+            name: AutoCheckUserBody.name,
+            plate: AutoCheckUserBody.plate,
+            photo: AutoCheckUserBody.photo,
+            descritor: AutoCheckUserBody.descritor
+        })
+        await this.saveAutoCheckUser.save(user)
     }
+
 }

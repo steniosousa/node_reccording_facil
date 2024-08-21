@@ -12,6 +12,7 @@ export class AutoCheckCreateUserRepositorie implements FindAutoCheckUserById, Sa
                     name: data.name,
                     plate: data.plate,
                     photo: data.photo,
+                    descritor:data.descritor
                 }
             })
         } catch (error) {

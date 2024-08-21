@@ -6,16 +6,17 @@ export class CreateTruckDriverController {
 
     async execute(req: Request, res: Response): Promise<void> {
         try {
-            const { name, plate, photo } = req.body;
-            if (!name || !plate || !photo) {
+            const { name, plate, photo, descriptor } = req.body;
+            console.log(req.body)
+            if (!name || !plate || !photo || !descriptor) {
                 throw new Error('Envie todos os dados necessários');
             }
 
             const iTruckDriverUseCase = await this.service.execute({
-                name, plate, photo
+                name, plate, photo, descritor: descriptor
             });
 
-            res.status(200).json(iTruckDriverUseCase);
+            res.status(200).json('iTruckDriverUseCase');
         } catch (error: unknown) {
             let errorMessage = "Falha ao criar o motorista do caminhão";
             if (error instanceof Error) {

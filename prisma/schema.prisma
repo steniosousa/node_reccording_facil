@@ -25,4 +25,5 @@ model AutoCheckUser {
   createdAt   DateTime  @default(now())
   presentedAt DateTime?
   photo       String?
+  descritor   String?
 }

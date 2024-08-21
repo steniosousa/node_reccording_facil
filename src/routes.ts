@@ -25,8 +25,7 @@ routes.post('/AutoCheck/truckDriverUser/create',
     (req: Request, res: Response) => createUserAutoCheck.execute(req, res) // Controlador
 );
 
-routes.post('/AutoCheck/truckDriverUser/check',
-    upload.single('photo'),
+routes.get('/AutoCheck/truckDriverUser/check',
     // (req: any, res: Response, next: NextFunction) => AuthMiddleware(req, res, next), // Middleware de autenticação
     (req: Request, res: Response) => IdentifyAutoCheckUser.execute(req, res) // Controlador
 );
